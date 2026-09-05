@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://frv1idgj6r4j"]
+
+[ext_resource type="Texture2D" uid="uid://bdsabf6vq1tk1" path="res://PNG/Meteors/meteorBrown_big3.png" id="1_5civa"]
+
+[node name="Meteor" type="Node2D" unique_id=1930122832]
+position = Vector2(100, 100)
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1724413788]
+scale = Vector2(1, 0.601)
+texture = ExtResource("1_5civa")

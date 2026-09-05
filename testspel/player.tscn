@@ -7,6 +7,7 @@
 size = Vector2(103, 94)
 
 [node name="Player" type="CharacterBody2D" unique_id=1682511538]
+collision_mask = 2
 script = ExtResource("1_onrkg")
 
 [node name="PlayerShape" type="Sprite2D" parent="." unique_id=1798201810]
