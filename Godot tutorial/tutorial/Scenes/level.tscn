@@ -7,11 +7,10 @@
 [node name="Level" type="Node2D" unique_id=1172689181]
 
 [node name="BG" type="Sprite2D" parent="." unique_id=117453590]
-position = Vector2(574.5, 325.5)
-scale = Vector2(4.5820313, 2.6132813)
+position = Vector2(637.99994, 359.49997)
+scale = Vector2(5.0781245, 2.878906)
 texture = ExtResource("1_k5f4k")
 
 [node name="Player" parent="." unique_id=1019802026 instance=ExtResource("2_6phgx")]
-position = Vector2(411, 271)
 
 [node name="Meteor" parent="." unique_id=1930122832 instance=ExtResource("3_6phgx")]
