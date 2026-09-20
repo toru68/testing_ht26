@@ -1,16 +1,62 @@
 [gd_scene format=3 uid="uid://bvrlomqetduav"]
 
+[ext_resource type="Script" uid="uid://bkth4gv6r3kum" path="res://Scenes/level.gd" id="1_81xng"]
 [ext_resource type="Texture2D" uid="uid://bsu5lv47i62vy" path="res://Backgrounds/purple.png" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://cdgkvkjbjqn1c" path="res://Scenes/player.tscn" id="2_6phgx"]
-[ext_resource type="PackedScene" uid="uid://frv1idgj6r4j" path="res://Scenes/meteor.tscn" id="3_6phgx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vv2q"]
+size = Vector2(43, 775)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
+size = Vector2(1343.5, 48)
 
 [node name="Level" type="Node2D" unique_id=1172689181]
+script = ExtResource("1_81xng")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=117453590]
-position = Vector2(637.99994, 359.49997)
+position = Vector2(657.00006, 368)
 scale = Vector2(5.0781245, 2.878906)
 texture = ExtResource("1_k5f4k")
 
 [node name="Player" parent="." unique_id=1019802026 instance=ExtResource("2_6phgx")]
+position = Vector2(443, 201)
 
-[node name="Meteor" parent="." unique_id=1930122832 instance=ExtResource("3_6phgx")]
+[node name="Border" type="Node2D" parent="." unique_id=2112978165]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Border" unique_id=955205712]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D" unique_id=1414189662]
+position = Vector2(1300, 382)
+shape = SubResource("RectangleShape2D_4vv2q")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Border" unique_id=357695279]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D2" unique_id=1513528871]
+position = Vector2(-19, 365)
+shape = SubResource("RectangleShape2D_4vv2q")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Border" unique_id=454556665]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D3" unique_id=469452875]
+position = Vector2(618, -25)
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Border" unique_id=1615577589]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D4" unique_id=1027753191]
+position = Vector2(641, 756)
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="MeteorTimer" type="Timer" parent="." unique_id=1200122302]
+autostart = true
+
+[node name="Meteors" type="Node2D" parent="." unique_id=1107480796]
+
+[node name="Lasers" type="Node2D" parent="." unique_id=2031233411]
+
+[connection signal="laser" from="Player" to="." method="_on_player_laser"]
+[connection signal="timeout" from="MeteorTimer" to="." method="_on_meteor_timer_timeout"]

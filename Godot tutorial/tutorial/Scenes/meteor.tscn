@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://frv1idgj6r4j"]
 
-[ext_resource type="Texture2D" uid="uid://bdsabf6vq1tk1" path="res://PNG/Meteors/meteorBrown_big3.png" id="1_5civa"]
+[ext_resource type="Script" uid="uid://bpge4bomo5hv1" path="res://Scenes/meteor.gd" id="1_wm1ig"]
+[ext_resource type="Texture2D" uid="uid://dbasuue21tscv" path="res://PNG/Meteors/meteorBrown_big1.png" id="2_wm1ig"]
 
-[node name="Meteor" type="Node2D" unique_id=1930122832]
-position = Vector2(100, 100)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vv2q"]
+radius = 38.0
+height = 76.0
 
-[node name="Body" type="Sprite2D" parent="." unique_id=1724413788]
-scale = Vector2(1, 0.601)
-texture = ExtResource("1_5civa")
+[node name="Meteor" type="Area2D" unique_id=475446059]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_wm1ig")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1507635187]
+texture = ExtResource("2_wm1ig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=827919042]
+shape = SubResource("CapsuleShape2D_4vv2q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

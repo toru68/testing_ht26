@@ -3,8 +3,20 @@
 [ext_resource type="Script" uid="uid://cwvwqvbuumxm3" path="res://Scenes/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bcgnayk7q2dwj" path="res://PNG/playerShip1_red.png" id="1_v0iea"]
 
-[node name="Player" type="Node2D" unique_id=1019802026]
+[node name="Player" type="CharacterBody2D" unique_id=1426165964]
+collision_mask = 6
 script = ExtResource("1_cvnsp")
 
 [node name="PlayerImage" type="Sprite2D" parent="." unique_id=133513958]
 texture = ExtResource("1_v0iea")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=103641992]
+polygon = PackedVector2Array(-7, -36, 8, -36, 12, -11, 35, 3, 47, -5, 47, 23, 14, 28, 8, 37, -6, 38, -14, 26, -45, 19, -48, -5, -37, 2, -11, -12)
+
+[node name="LaserStartPos" type="Marker2D" parent="." unique_id=1297018640]
+position = Vector2(0, -62)
+
+[node name="LaserCoolDown" type="Timer" parent="." unique_id=661947914]
+wait_time = 0.5
+
+[connection signal="timeout" from="LaserCoolDown" to="." method="_on_laser_cool_down_timeout"]
