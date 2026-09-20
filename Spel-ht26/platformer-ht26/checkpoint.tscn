@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ddq0als4igabi"]
+
+[node name="Checkpoint" type="Area2D" unique_id=1835464954]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1888223193]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1370331027]
