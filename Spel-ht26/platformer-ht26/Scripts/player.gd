@@ -7,6 +7,7 @@ const MAX_SPEED = 350
 const ACC = 2000
 const JUMP_SPEED = 700
 const GRAVITY = 1500
+const KNOCKBACK_SPEED = 700
 
 enum{IDLE, WALK, AIR, EDGE, DEAD}
 
@@ -16,6 +17,7 @@ enum{IDLE, WALK, AIR, EDGE, DEAD}
 var state = IDLE
 var can_jump: bool = true
 var want_to_jump: bool = false
+var is_dead: bool = false
 
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_buffer: Timer = $JumpBuffer
@@ -147,11 +149,11 @@ func _air_state(delta: float) -> void:
 	elif is_on_floor():
 		_enter_idle_state()
 	
-func _edge_state(delta: float) -> void:
+func _edge_state(_delta: float) -> void:
 	pass
 	
 func _dead_state(delta: float) -> void:
-	pass
+	_movement(0,delta)
 
 ########## ENTER STATE FUNCTIONS ############
 func _enter_idle_state() -> void:
@@ -179,9 +181,22 @@ func _enter_air_state(jumping: bool) -> void:
 func _enter_edge_state() -> void:
 	state = EDGE
 
-func _enter_dead_state() -> void:
-	state = DEAD
-
+func enter_dead_state(dir: Vector2) -> void:
+	print("enter dead state")
+	if not is_dead:
+		state = DEAD
+		is_dead = true
+		velocity = dir * KNOCKBACK_SPEED
+		#$CollisionShape2D.disabled = true
+		anim.play("air")
+		$CollisionShape2D.set_deferred("disabled", true)
+		$RemoteTransform2D.remote_path = "" # Kameran kopplas bort från spelaren
+		
+		#Lite extra krydda till dödsanimation
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "rotation", rotation * PI, 0.5)
+		
 
 
 

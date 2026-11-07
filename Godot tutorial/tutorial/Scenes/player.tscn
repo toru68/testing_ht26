@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwvwqvbuumxm3" path="res://Scenes/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bcgnayk7q2dwj" path="res://PNG/playerShip1_red.png" id="1_v0iea"]
+[ext_resource type="AudioStream" uid="uid://c3yf05uudtcpe" path="res://Sounds/Pulse Sniper.wav" id="3_6t5aa"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1426165964]
 collision_mask = 6
@@ -18,5 +19,8 @@ position = Vector2(0, -62)
 
 [node name="LaserCoolDown" type="Timer" parent="." unique_id=661947914]
 wait_time = 0.5
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="." unique_id=120557512]
+stream = ExtResource("3_6t5aa")
 
 [connection signal="timeout" from="LaserCoolDown" to="." method="_on_laser_cool_down_timeout"]

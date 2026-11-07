@@ -3,6 +3,29 @@
 [ext_resource type="Script" uid="uid://bkth4gv6r3kum" path="res://Scenes/level.gd" id="1_81xng"]
 [ext_resource type="Texture2D" uid="uid://bsu5lv47i62vy" path="res://Backgrounds/purple.png" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://cdgkvkjbjqn1c" path="res://Scenes/player.tscn" id="2_6phgx"]
+[ext_resource type="Texture2D" uid="uid://c3l1hscfsg3gg" path="res://PNG/Effects/star1.png" id="3_0f350"]
+[ext_resource type="Texture2D" uid="uid://bhlmtagyxipq4" path="res://PNG/Effects/star2.png" id="4_8c0lf"]
+[ext_resource type="Texture2D" uid="uid://bcy1yoiycnyuf" path="res://PNG/Effects/star3.png" id="5_754fn"]
+[ext_resource type="PackedScene" uid="uid://crt7ysaxv4h6g" path="res://Scenes/ui.tscn" id="7_8c0lf"]
+[ext_resource type="AudioStream" uid="uid://ob4ublsaoawh" path="res://Sounds/Turret Reload.wav" id="8_754fn"]
+[ext_resource type="AudioStream" uid="uid://07w7p0l3r6j3" path="res://Sounds/Gravipanzer.wav" id="9_bvt00"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4vv2q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0f350")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8c0lf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_754fn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vv2q"]
 size = Vector2(43, 775)
@@ -17,11 +40,61 @@ script = ExtResource("1_81xng")
 position = Vector2(657.00006, 368)
 scale = Vector2(5.0781245, 2.878906)
 texture = ExtResource("1_k5f4k")
+metadata/_edit_lock_ = true
+
+[node name="Stars" type="Node2D" parent="." unique_id=130663538]
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stars" unique_id=1408032089]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.11798668
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Stars" unique_id=415516057]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.38641608
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Stars" unique_id=112580430]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.38641608
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Stars" unique_id=1018259909]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.38641608
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Stars" unique_id=1742235165]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.38641608
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Stars" unique_id=1507137261]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.38641608
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Stars" unique_id=2025034973]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.38641608
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Stars" unique_id=1261081922]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.38641608
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Stars" unique_id=1571493361]
+sprite_frames = SubResource("SpriteFrames_4vv2q")
+autoplay = "default"
+frame_progress = 0.38641608
 
 [node name="Player" parent="." unique_id=1019802026 instance=ExtResource("2_6phgx")]
 position = Vector2(443, 201)
 
 [node name="Border" type="Node2D" parent="." unique_id=2112978165]
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Border" unique_id=955205712]
 collision_layer = 4
@@ -55,8 +128,18 @@ shape = SubResource("RectangleShape2D_6phgx")
 autostart = true
 
 [node name="Meteors" type="Node2D" parent="." unique_id=1107480796]
+metadata/_edit_lock_ = true
 
 [node name="Lasers" type="Node2D" parent="." unique_id=2031233411]
+metadata/_edit_lock_ = true
+
+[node name="UI" parent="." unique_id=198059306 instance=ExtResource("7_8c0lf")]
+
+[node name="PlayerHit" type="AudioStreamPlayer2D" parent="." unique_id=24055487]
+stream = ExtResource("8_754fn")
+
+[node name="MeteorHit" type="AudioStreamPlayer2D" parent="." unique_id=412095370]
+stream = ExtResource("9_bvt00")
 
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="MeteorTimer" to="." method="_on_meteor_timer_timeout"]

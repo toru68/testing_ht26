@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://340slg5posob"
+path="res://.godot/imported/Analog Shield Gen Loop.wav-67d48b5f06a07eeea1ded3df9661de9c.sample"
+
+[deps]
+
+source_file="res://Sounds/Analog Shield Gen Loop.wav"
+dest_files=["res://.godot/imported/Analog Shield Gen Loop.wav-67d48b5f06a07eeea1ded3df9661de9c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

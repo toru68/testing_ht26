@@ -57,7 +57,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fkybt"]
 resource_name = "walk"
-length = 0.5
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -82,6 +81,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=3369705]
+collision_layer = 2
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1471422307]
@@ -107,6 +107,8 @@ one_shot = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1146961083]
 position = Vector2(-6, -12)
 rect = Rect2(-18, -11, 50, 55)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1526964797]
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]

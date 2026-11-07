@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://clpajx4utjfhk" path="res://Assets/tileset.png" id="1_f1n8c"]
 [ext_resource type="Script" uid="uid://bcynub8r3ajri" path="res://Scripts/level.gd" id="1_yjxcc"]
 [ext_resource type="PackedScene" uid="uid://dcswww7lw1qgj" path="res://Scenes/player.tscn" id="2_7x7pb"]
+[ext_resource type="PackedScene" uid="uid://ddq0als4igabi" path="res://checkpoint.tscn" id="4_lkqqh"]
+[ext_resource type="PackedScene" uid="uid://b1banyde30bav" path="res://Scenes/enemy.tscn" id="5_tq1so"]
+[ext_resource type="Texture2D" uid="uid://dkit1iosmegx8" path="res://Assets/heart.png" id="6_rv5g2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x7pb"]
 texture = ExtResource("1_f1n8c")
@@ -373,16 +376,58 @@ terrain_set_0/terrain_0/color = Color(0.6943382, 0.13943082, 0.174721, 1)
 sources/0 = SubResource("TileSetAtlasSource_7x7pb")
 
 [node name="Level" type="Node2D" unique_id=1153935479]
-position = Vector2(0, -2)
 script = ExtResource("1_yjxcc")
 
 [node name="Player" parent="." unique_id=3369705 instance=ExtResource("2_7x7pb")]
-position = Vector2(700, 258)
+position = Vector2(284, 66)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=44024678]
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAAGAAIAAAABAAAAAAAGAAMAAAABAAEAAAAHAAMAAAACAAEAAAAGAAQAAAABAAEAAAAFAAQAAAAAAAEAAAAFAAMAAAAAAAEAAAAHAAIAAAACAAAAAAAHAAQAAAACAAEAAAAHAAUAAAACAAEAAAAGAAYAAAABAAIAAAAFAAYAAAAAAAIAAAAGAAUAAAABAAEAAAAFAAUAAAAAAAEAAAAHAAYAAAACAAIAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAARAAYAAAABAAAAAAARAAcAAAABAAEAAAARAAgAAAABAAIAAAAQAAgAAAABAAIAAAAQAAcAAAABAAEAAAAPAAcAAAABAAEAAAAPAAgAAAABAAIAAAAOAAgAAAABAAIAAAAOAAcAAAABAAEAAAASAAYAAAABAAAAAAASAAcAAAABAAEAAAASAAgAAAABAAIAAAATAAgAAAABAAIAAAATAAcAAAABAAEAAAATAAYAAAABAAAAAAAUAAYAAAACAAAAAAAUAAcAAAACAAEAAAAUAAgAAAACAAIAAAANAAYAAAAAAAAAAAANAAcAAAAAAAEAAAANAAgAAAAAAAIAAAAKAAQAAAAAAAAAAAALAAQAAAACAAAAAAAKAAUAAAAAAAIAAAALAAUAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAAGAAIAAAABAAAAAAAGAAMAAAABAAEAAAAHAAMAAAACAAEAAAAGAAQAAAABAAEAAAAFAAQAAAAAAAEAAAAFAAMAAAAAAAEAAAAHAAIAAAACAAAAAAAHAAQAAAACAAEAAAAHAAUAAAACAAEAAAAGAAYAAAABAAEAAAAFAAYAAAAAAAEAAAAGAAUAAAABAAEAAAAFAAUAAAAAAAEAAAAHAAYAAAACAAEAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAARAAYAAAABAAAAAAARAAcAAAABAAEAAAARAAgAAAABAAIAAAAQAAgAAAABAAIAAAAQAAcAAAABAAEAAAAPAAcAAAABAAEAAAAPAAgAAAABAAIAAAAOAAgAAAABAAIAAAAOAAcAAAABAAEAAAASAAYAAAABAAAAAAASAAcAAAABAAEAAAASAAgAAAABAAIAAAATAAgAAAABAAIAAAATAAcAAAABAAEAAAATAAYAAAABAAAAAAAUAAYAAAABAAAAAAAUAAcAAAABAAEAAAAUAAgAAAABAAIAAAANAAYAAAAAAAAAAAANAAcAAAAAAAEAAAANAAgAAAAAAAIAAAAKAAQAAAAAAAAAAAALAAQAAAACAAAAAAAKAAUAAAAAAAIAAAALAAUAAAACAAIAAAAVAAYAAAACAAAAAAAVAAcAAAACAAEAAAAVAAgAAAACAAIAAAAFAAcAAAAAAAIAAAAGAAcAAAABAAIAAAAHAAcAAAACAAIAAAA=")
 tile_set = SubResource("TileSet_4vv2q")
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="." unique_id=813314538]
-position = Vector2(898, 271)
+position = Vector2(335, 86)
+
+[node name="Checkpoint" parent="." unique_id=1835464954 instance=ExtResource("4_lkqqh")]
+position = Vector2(526, 177)
+
+[node name="Checkpoint2" parent="." unique_id=173808415 instance=ExtResource("4_lkqqh")]
+position = Vector2(759, 271)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2098071978]
+limit_left = 0
+limit_top = -50
+limit_bottom = 900
+limit_smoothed = true
+
+[node name="Enemy" parent="." unique_id=2095477342 instance=ExtResource("5_tq1so")]
+position = Vector2(813, 244)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1876990643]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD" unique_id=1800923022]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="HeartSymbol1" type="TextureRect" parent="HUD/HBoxContainer" unique_id=1314003827]
+self_modulate = Color(1, 0.15686275, 0.15294118, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_rv5g2")
+
+[node name="HeartSymbol2" type="TextureRect" parent="HUD/HBoxContainer" unique_id=15095718]
+self_modulate = Color(1, 0.15686275, 0.15294118, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_rv5g2")
+
+[node name="HeartSymbol3" type="TextureRect" parent="HUD/HBoxContainer" unique_id=159169440]
+self_modulate = Color(1, 0.15686275, 0.15294118, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_rv5g2")
